@@ -17,25 +17,35 @@ Music, upgrading skills and weapons,
 
 ## Data structure
 VISUAL:
-Start.html
-Canvas.html
-Game Over.html
+index.html
 ------------------------
 LOGIC:
 Main.js
+ -start game (destroy splashScreen and build gameScreen)
+ -build dom (get canvas html)
+ -destroy dom (empty html)
+ -build splash screen(title, description, start btn)
+ -destroy splash screen (destroy dom -empty html-)
+ -build game screen (build dom =  canvas html)
+ -destroy game screen (destroy dom -empty html-)
+ -build gameOver screen (build dom = gameOver html)
+ -destroy gameOver screen (destroy dom - empty html)
+ -event listener keydown (left, right, Shoot, spacebar)
  -load game
- -start game
- -stop game
 
 Game.js
- -Game constructor
+ -Game constructor(canvas, gameOver)
+	new player, new enemies, new bullets, gameOver.
  -creates player
+	durection, x, y, size, lives
  -creates enemy
+	
  -game methods
 
 player.js
  -player constructor
  -player methods (collision?)
+
 
 ## States y States Transitions
 Definition of the different states and their transition (transition functions)
