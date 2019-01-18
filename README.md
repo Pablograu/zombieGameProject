@@ -16,60 +16,8 @@ Canvas
 Images, music, upgrading skills and weapons, high scores and extra lives.
 
 ## Data structure
-VISUAL:
-
-index.html
-------------------------
-LOGIC:
-
-Game.js
 ```
- -Game constructor(canvas, gameOver)
-	new player, 
-	new enemies, 
-	new bullets,
- -creates player (direction, x, y, size, life)
-	
- -creates enemy
-	
- -game methods
-
- ```
-```
-player.js
- -player constructor
- -player methods (collision?)
-```
-```
-enemies.js
--enemy constructor
--enemy methods
-```
-
-```
-bullets.js
--bullet constructor
--bullet methods
-
-```
-
-
-## States y States Transitions
-Definition of the different states and their transition (transition functions)
-
-- splashScreen
-- gameScreen
-- gameoverScreen
-- winScreen
-
-
-## Task
--planning
-
-- create files and link them with js
-- transitions splsh - game - gameover
-```
-1.indes.html
+1.index.html
 2.main.js
 3.game.js
 4.player.js
@@ -140,6 +88,30 @@ check collision (player/enemy)
 - speed, x, y, size, canvas, ctx (2d)
 - draw(), update(), collide(), remove()
 
+
+## States y States Transitions
+Definition of the different states and their transition (transition functions)
+
+- splashScreen
+- gameScreen
+- gameoverScreen
+- winScreen
+
+
+## Task
+
+- create files
+- link files
+- transitions splsh - game - gameover
+- style a bit
+- draw player on canvas
+- move player
+- draw enemy
+- make it come from -y to player position
+- make more enemies
+- shoot
+- remove bullets/enemies from array
+- collision logic (bullets + enemies)
 
 ## Links
 
