@@ -22,15 +22,25 @@ index.html
 LOGIC:
 Main.js
  -start game (destroy splashScreen and build gameScreen)
+ 
  -build dom (get canvas html)
+ 
  -destroy dom (empty html)
+ 
  -build splash screen(title, description, start btn)
+ 
  -destroy splash screen (destroy dom -empty html-)
+ 
  -build game screen (build dom =  canvas html)
+ 
  -destroy game screen (destroy dom -empty html-)
+ 
  -build gameOver screen (build dom = gameOver html)
+ 
  -destroy gameOver screen (destroy dom - empty html)
+ 
  -event listener keydown (left, right, Shoot, spacebar)
+ 
  -load game
 
 Game.js
