@@ -13,48 +13,45 @@ You died when the enemies touch you.
 Canvas
 
 ## Backlog
-Music, upgrading skills and weapons, 
+Images, music, upgrading skills and weapons, high scores and extra lives.
 
 ## Data structure
 VISUAL:
+
 index.html
 ------------------------
 LOGIC:
-Main.js
- -start game (destroy splashScreen and build gameScreen)
- 
- -build dom (get canvas html)
- 
- -destroy dom (empty html)
- 
- -build splash screen(title, description, start btn)
- 
- -destroy splash screen (destroy dom -empty html-)
- 
- -build game screen (build dom =  canvas html)
- 
- -destroy game screen (destroy dom -empty html-)
- 
- -build gameOver screen (build dom = gameOver html)
- 
- -destroy gameOver screen (destroy dom - empty html)
- 
- -event listener keydown (left, right, Shoot, spacebar)
- 
- -load game
 
 Game.js
+```
  -Game constructor(canvas, gameOver)
-	new player, new enemies, new bullets, gameOver.
- -creates player
-	durection, x, y, size, lives
+	new player, 
+	new enemies, 
+	new bullets,
+ -creates player (direction, x, y, size, life)
+	
  -creates enemy
 	
  -game methods
 
+ ```
+```
 player.js
  -player constructor
  -player methods (collision?)
+```
+```
+enemies.js
+-enemy constructor
+-enemy methods
+```
+
+```
+bullets.js
+-bullet constructor
+-bullet methods
+
+```
 
 
 ## States y States Transitions
@@ -68,7 +65,80 @@ Definition of the different states and their transition (transition functions)
 
 ## Task
 -planning
-Index, canvas, game over. LOGIC.
+
+- create files and link them with js
+- transitions splsh - game - gameover
+```
+1.indes.html
+2.main.js
+3.game.js
+4.player.js
+5.enemy.js
+6.bullets.js
+```
+
+1) Index with js
+2) Main.js
+- start game (destroy splashScreen and build gameScreen)
+ 
+- build dom (get canvas html)
+ 
+- destroy dom (empty html)
+ 
+- build splash screen(title, description, start btn)
+ 
+- destroy splash screen (destroy dom -empty html-)
+ 
+- build game screen (build dom =  canvas html)
+ 
+- destroy game screen (destroy dom -empty html-)
+ 
+- build gameOver screen (build dom = gameOver html)
+ 
+- destroy gameOver screen (destroy dom - empty html)
+ 
+- event listener keydown (left, right, Shoot, spacebar)
+ 
+- load game
+
+3)Game constructor
+- args(canvas, gameEndHandler)
+- new player
+- array enemies
+- animation
+- gameEndHandler 
+- clearCanvas()
+- drawCanvas()
+- updateGame()
+```
+player
+create enemy
+remove enemy
+create bullet
+remove bullet
+check collision (enemy/bullet)
+check collision (player/enemy)
+```
+- stop() cancelAnimationFrame
+- key up, down and shoot
+- START(): loop that update, clear and draws
+
+4)Player constructor
+- args(canvas, life)
+- props: x, y, size, speed, life, canvas, ctx(2d);
+- methods: setDirection(), draw(), update(), collide() 
+
+** maybe collide() = die**
+
+5)Enemy constructor
+- args(canvas, x, speed);
+- props: x, y, size, speed, life, canvas, ctx(2d)
+- draw(), update(), collide(), remove()
+
+6) Bullet constructor
+- arg(canvas, y, speed)
+- speed, x, y, size, canvas, ctx (2d)
+- draw(), update(), collide(), remove()
 
 
 ## Links
