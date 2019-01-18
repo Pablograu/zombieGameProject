@@ -1,13 +1,9 @@
 "use strict";
-
-// var ex = document.querySelector(".navbar");
-// var lis = document.querySelector(".intro img")
-// ex.addEventListener("click", function(){
-//     lis.classList.toggle("hide");
-// })
+var canvas;
 var splashScreen;
 var gameScreen;
 var gameOverScreen;
+// var ctx = canvas.getContext("2d");
 
 function startGameClick(){
     destroySplashScreen();
@@ -65,6 +61,10 @@ function buildGameScreen(){    //canvas
             </canvas>
         </section>
     `);
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+    var game = new Game(canvas);
+    game.start()
     console.log("lets play!!!")
 };
 
