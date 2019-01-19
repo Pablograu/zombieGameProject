@@ -1,20 +1,18 @@
 "use strict";
-var canvas;
+
 var splashScreen;
 var gameScreen;
 var gameOverScreen;
-// var ctx = canvas.getContext("2d");
+
 
 function startGameClick(){
     destroySplashScreen();
-    buildGameScreen();
-    
+    buildGameScreen();   
 }
 
 function playAgainClick(){
     destroyGameOverScreen();
-    buildSplashScreen();
-    
+    buildSplashScreen();   
 }
 
 //-------------------------------------------
@@ -56,16 +54,15 @@ function buildGameScreen(){    //canvas
             <div class="canvas_title">
                 <h1>Ironzombies</h1>
             </div>
-            <canvas id="canvas">
+            <canvas id="canvas" width="500" height="500">
 
             </canvas>
         </section>
     `);
     var canvas = document.getElementById("canvas");
-    var ctx = canvas.getContext("2d");
-    var game = new Game(canvas);
-    game.start()
-    console.log("lets play!!!")
+    var game = new Game(canvas);    
+    game.start();
+    console.log("lets play!!!");
 };
 
 function destroyGameScreen(){

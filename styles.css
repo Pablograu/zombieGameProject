@@ -14,6 +14,7 @@ html {
 
   #canvas{
       width: 500px;
+      height: 500px;
       border: 1px solid black;
   }
 
@@ -27,6 +28,9 @@ html {
     border-radius: 20px;
   }
 
+  button{
+    font-family:'Press Start 2P', cursive;
+  }
   .startBtn{
     background: url('https://confnu-production.s3.amazonaws.com/conference_editions/8/images/13/image/repeating-sprite.png') 0 0 repeat-x;
     padding: 0 14px;
@@ -43,4 +47,8 @@ html {
     text-align: center;
     padding-top: 150px;
     
+  }
+
+  .game{
+    text-align: center;
   }
