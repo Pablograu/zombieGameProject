@@ -6,7 +6,7 @@ function Player(canvas){
     this.y = 400;
     this.ctx = canvas.getContext("2d");
     this.direction = 0;
-    this.speed = 0;
+    this.speed = 3.5;
 }
 
 Player.prototype.draw = function(){
@@ -15,6 +15,16 @@ Player.prototype.draw = function(){
 
 Player.prototype.update = function(){
     // this.x = Math.floor((this.x + this.speed) * this.direction);
-    this.x = this.x + (this.speed * this.direction);
+    this.x += (this.speed * this.direction);
     console.log(this.x);
+}
+
+Player.prototype.setDirection = function(direction){
+    if(direction === "right"){
+        this.direction = 1;
+    } else if(direction === "left"){
+        this.direction = -1;
+    } else {
+        this.direction = 0;
+    }
 }

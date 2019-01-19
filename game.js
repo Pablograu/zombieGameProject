@@ -16,11 +16,11 @@ Game.prototype.clearCanvas = function(){
 //draw player, enemy and bullets
 Game.prototype.drawCanvas = function(){
     this.player.draw();
-}
+};
 
 Game.prototype.updateCanvas = function(){
     this.player.update();
-}
+};
 
 Game.prototype.start = function(){
     console.log("Game started");
@@ -33,4 +33,16 @@ Game.prototype.start = function(){
     }
     window.requestAnimationFrame(loop.bind(this));
     
+};
+
+Game.prototype.moveRight = function(){
+    this.player.setDirection("right")
+};
+
+Game.prototype.moveLeft = function(){
+    this.player.setDirection("left")
+};
+
+Game.prototype.still = function(){
+    this.player.setDirection("still")
 }

@@ -4,7 +4,7 @@ var splashScreen;
 var gameScreen;
 var gameOverScreen;
 
-
+ 
 function startGameClick(){
     destroySplashScreen();
     buildGameScreen();   
@@ -60,10 +60,22 @@ function buildGameScreen(){    //canvas
         </section>
     `);
     var canvas = document.getElementById("canvas");
-    var game = new Game(canvas);    
+    var game = new Game(canvas); 
+    function onKeyDown(event){
+        switch(event.keyCode){
+            case 39: game.moveRight();
+            break;
+            case 37: game.moveLeft();
+            break;
+            case null: game.still();
+            
+        }
+    }
+    document.addEventListener("keyup", onKeyDown);
     game.start();
     console.log("lets play!!!");
 };
+
 
 function destroyGameScreen(){
     destroyDom(gameScreen);
