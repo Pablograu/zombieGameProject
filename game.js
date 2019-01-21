@@ -29,17 +29,28 @@ Game.prototype.drawCanvas = function(){
 
 Game.prototype.updateCanvas = function(){
     this.player.update();
+
     this.bullets.forEach(function(bullet){
          bullet.update()
     });
-    if (Math.random() > 0.95){
+
+    if (Math.random() > 0.95){  //creates enemy with a probability of 5% in every frame
         this.createEnemy();
     }
     this.enemies.forEach(function(enemy){
         enemy.update();
-    })
+        this.followPlayer(enemy)
+    }.bind(this));
 
 };
+
+Game.prototype.followPlayer = function(enemy){     //the enemy updates its x acording to the player.x
+    if(enemy.x > this.player.x){                    
+        enemy.x -= 0.2;
+    }else{
+        enemy.x += 0.2;
+    }
+}
 
 Game.prototype.start = function(){
     console.log("Game started");

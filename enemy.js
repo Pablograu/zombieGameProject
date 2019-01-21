@@ -15,5 +15,6 @@ Enemy.prototype.draw = function(){
 
 Enemy.prototype.update = function(){
     this.y += (this.speed * this.direction);
+     
     // console.log(this.x);
 }
