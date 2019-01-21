@@ -3,7 +3,8 @@ function Game(canvas){
     this.canvas = canvas;
     this.ctx = canvas.getContext("2d");
     this.player = new Player(canvas);
-    this.bullet;
+    this.bullets = [];
+    this.enemies = [];
     this.animation;
 }
 
@@ -17,17 +18,27 @@ Game.prototype.clearCanvas = function(){
 //draw player, enemy and bullet
 Game.prototype.drawCanvas = function(){
     this.player.draw();
-    if(this.bullet) {
-        this.bullet.draw();
-    }
+    this.bullets.forEach(function(bullet){
+         bullet.draw()
+    });
+    this.enemies.forEach(function(enemy){
+         enemy.draw();
+    });
    
 };
 
 Game.prototype.updateCanvas = function(){
     this.player.update();
-    if(this.bullet){
-        this.bullet.update();   
-    }     
+    this.bullets.forEach(function(bullet){
+         bullet.update()
+    });
+    if (Math.random() > 0.95){
+        this.createEnemy();
+    }
+    this.enemies.forEach(function(enemy){
+        enemy.update();
+    })
+
 };
 
 Game.prototype.start = function(){
@@ -53,15 +64,21 @@ Game.prototype.moveLeft = function(){
 
 Game.prototype.still = function(){
     this.player.setDirection("still");
-}
+};
 
 Game.prototype.createBullet = function(){
-    this.bullet = new Bullet(canvas, this.player.x);    
+    this.bullets.push(new Bullet(canvas, (this.player.x+8)));    
     console.log("bullet created");
-}
+};
 
 Game.prototype.shoot = function(){
     this.createBullet();
     console.log("bang!");
-}
+};
+Game.prototype.createEnemy = function(){
+    var x = Math.random() * canvas.width;
+    this.enemies.push(new Enemy(canvas, x));
+    console.log("enemy created");
+
+};
 

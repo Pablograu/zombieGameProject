@@ -6,12 +6,12 @@ function Bullet(canvas, playerX){
     this.y = 400;
     this.ctx = canvas.getContext("2d");
     this.direction = 1;
-    this.speed = 1.05;
+    this.speed = 4;
 }
 
 Bullet.prototype.draw = function(){
     this.ctx.fillRect(this.x, this.y, this.width, this.height);
-    console.log("this should be a bullet");
+    // console.log("this should be a bullet");
 }
 
 Bullet.prototype.update = function(){
