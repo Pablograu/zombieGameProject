@@ -61,17 +61,21 @@ function buildGameScreen(){    //canvas
     `);
     var canvas = document.getElementById("canvas");
     var game = new Game(canvas); 
+
     function onKeyDown(event){
         switch(event.keyCode){
+            case 83: game.shoot();
+            break;
             case 39: game.moveRight();
             break;
             case 37: game.moveLeft();
             break;
-            case null: game.still();
+            default: game.still();
             
         }
     }
-    document.addEventListener("keyup", onKeyDown);
+    document.addEventListener("keydown", onKeyDown);
+
     game.start();
     console.log("lets play!!!");
 };

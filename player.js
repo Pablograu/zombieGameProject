@@ -1,7 +1,7 @@
 function Player(canvas){
     this.canvas = canvas;
-    this.width =  10;
-    this.height =  10;
+    this.width =  25;
+    this.height =  25;
     this.x = (canvas.width - (this.width + this.height))/2;
     this.y = 400;
     this.ctx = canvas.getContext("2d");
@@ -14,9 +14,8 @@ Player.prototype.draw = function(){
 }
 
 Player.prototype.update = function(){
-    // this.x = Math.floor((this.x + this.speed) * this.direction);
     this.x += (this.speed * this.direction);
-    console.log(this.x);
+    // console.log(this.x);
 }
 
 Player.prototype.setDirection = function(direction){
@@ -24,7 +23,8 @@ Player.prototype.setDirection = function(direction){
         this.direction = 1;
     } else if(direction === "left"){
         this.direction = -1;
-    } else {
+    } else if (direction === "still"){
         this.direction = 0;
     }
 }
+
