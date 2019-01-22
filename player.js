@@ -7,7 +7,7 @@ function Player(canvas){
     this.ctx = canvas.getContext("2d");
     this.direction = 0;
     this.speed = 3.5;
-    this.life = 1;
+    this.isDead = false;
 }
 
 Player.prototype.draw = function(){
@@ -40,12 +40,4 @@ Player.prototype.checkCollisions = function(enemy) {
     var collisionRight = this.x + this.width >= enemy.x;
     return collisionTop && collisionLeft && collisionRight;
    }
-// Player.prototype.getsBit = function(enemy){
-//     var xBit = (this.x < enemy.x) && (this.x + this.width > enemy.x);
-//     var yBit = (this.y < enemy.y) && (this.y + this.height > enemy.y);
-//     console.log(enemy.x);
-    // var yBit = (this.y - (this.width/2)) > (enemy.x - enemy.width/2);
-    // var xBit = (this.y - this.height/2) > (enemy.y - enemy.height/2);
-//     return xBit && yBit;
-// }
 

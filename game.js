@@ -52,7 +52,8 @@ Game.prototype.updateCanvas = function(){
         this.followPlayer(enemy);
 
         if(this.player.checkCollisions(enemy)){
-            this.endGame();
+            this.player.isDead = true;
+            
         };
 
         
@@ -83,6 +84,11 @@ Game.prototype.start = function(){
         this.clearCanvas();
         this.drawCanvas();
         this.animation = window.requestAnimationFrame(loop.bind(this));
+
+        if(this.player.isDead){
+            // this.stopGame();
+            this.endGame(); 
+        }
 
     }
     window.requestAnimationFrame(loop.bind(this));
