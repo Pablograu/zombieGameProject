@@ -1,17 +1,19 @@
 function Player(canvas){
     this.canvas = canvas;
-    this.width =  25;
-    this.height =  25;
+    this.width =  50;
+    this.height =  60;
     this.x = (canvas.width - (this.width + this.height))/2;
     this.y = 400;
     this.ctx = canvas.getContext("2d");
     this.direction = 0;
     this.speed = 3.5;
     this.isDead = false;
+    this.image = new Image();
 }
 
 Player.prototype.draw = function(){
-    this.ctx.fillRect(this.x, this.y, this.width, this.height);
+    this.image.src = "./images/player.png";
+    this.ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
 }
 
 Player.prototype.update = function(){

@@ -7,14 +7,18 @@ function Bullet(canvas, playerX){
     this.ctx = canvas.getContext("2d");
     this.direction = 1;
     this.speed = 4;
+    this.image = new Image();
 }
 
 Bullet.prototype.draw = function(){
-    this.ctx.fillRect(this.x, this.y, this.width, this.height);
-    // console.log("this should be a bullet");
+    this.image.src = "./images/lasersRed.png";
+    this.ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
 }
 
 Bullet.prototype.update = function(){
     this.y -= (this.speed * this.direction);
 }
 
+Bullet.prototype.isInScreen = function (){
+    return(this.x + this.height < 0)
+}

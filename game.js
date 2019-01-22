@@ -23,28 +23,34 @@ Game.prototype.drawCanvas = function(){
     img.src = "./images/fff.png";
     this.ctx.drawImage(img,0, 0);
     this.player.draw();
+    
     this.bullets.forEach(function(bullet){
          bullet.draw()
     });
+    
     this.enemies.forEach(function(enemy){
          enemy.draw();
     });
-
-    
-   
+ 
 };
 
 Game.prototype.updateCanvas = function(){
     this.player.update();
 
+    // this.bullets = this.bullets.filter(function (bullet){
+    //     return bullet.iSInScreen();
+    //  }.bind(this));
+
     this.bullets.forEach(function(bullet){
-         bullet.update()
+         bullet.update();
+
          this.enemies = this.enemies.filter(function (enemy){
             return !enemy.getsShot(bullet);
          }.bind(this));
     }.bind(this));
 
-    if (Math.random() > 0.95){  //creates enemy with a probability of 5% in every frame
+    
+    if (Math.random() > 0.9999){  //creates enemy with a probability of 5% in every frame
         this.createEnemy();
     }
     this.enemies.forEach(function(enemy){
@@ -61,10 +67,10 @@ Game.prototype.updateCanvas = function(){
 
 };
 
-Game.prototype.stopGame = function(){
-    console.log("stoooooooooooooop")
-    window.cancelAnimationFrame(this.animation);
-}
+// Game.prototype.stopGame = function(){
+//     console.log("stoooooooooooooop")
+//     window.cancelAnimationFrame(this.animation);
+// }
 
 Game.prototype.followPlayer = function(enemy){     //the enemy updates its x acording to the player.x
     if(enemy.x > this.player.x){                    
@@ -108,7 +114,7 @@ Game.prototype.still = function(){
 };
 
 Game.prototype.createBullet = function(){
-    this.bullets.push(new Bullet(canvas, (this.player.x+8)));    
+    this.bullets.push(new Bullet(canvas, (this.player.x+36)));    
     // console.log("bullet created");
 };
 
