@@ -60,7 +60,15 @@ function buildGameScreen(){    //canvas
         </section>
     `);
     var canvas = document.getElementById("canvas");
-    var game = new Game(canvas); 
+    
+    var gameEnd = function (){
+        game.stopGame()
+        destroyGameScreen();
+        buildGameOverScreen();
+    }
+
+
+    var game = new Game(canvas, gameEnd); 
 
     function onKeyDown(event){
         switch(event.keyCode){

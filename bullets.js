@@ -17,3 +17,4 @@ Bullet.prototype.draw = function(){
 Bullet.prototype.update = function(){
     this.y -= (this.speed * this.direction);
 }
+

@@ -1,11 +1,13 @@
 
-function Game(canvas){
+function Game(canvas, endGame){
     this.canvas = canvas;
     this.ctx = canvas.getContext("2d");
     this.player = new Player(canvas);
     this.bullets = [];
     this.enemies = [];
     this.animation;
+    this.score = 0;
+    this.endGame = endGame;
 }
 
 
@@ -17,6 +19,9 @@ Game.prototype.clearCanvas = function(){
 
 //draw player, enemy and bullet
 Game.prototype.drawCanvas = function(){
+    var img = new Image();
+    img.src = "./images/fff.png";
+    this.ctx.drawImage(img,0, 0);
     this.player.draw();
     this.bullets.forEach(function(bullet){
          bullet.draw()
@@ -24,6 +29,8 @@ Game.prototype.drawCanvas = function(){
     this.enemies.forEach(function(enemy){
          enemy.draw();
     });
+
+    
    
 };
 
@@ -32,17 +39,31 @@ Game.prototype.updateCanvas = function(){
 
     this.bullets.forEach(function(bullet){
          bullet.update()
-    });
+         this.enemies = this.enemies.filter(function (enemy){
+            return !enemy.getsShot(bullet);
+         }.bind(this));
+    }.bind(this));
 
     if (Math.random() > 0.95){  //creates enemy with a probability of 5% in every frame
         this.createEnemy();
     }
     this.enemies.forEach(function(enemy){
         enemy.update();
-        this.followPlayer(enemy)
+        this.followPlayer(enemy);
+
+        if(this.player.checkCollisions(enemy)){
+            this.endGame();
+        };
+
+        
     }.bind(this));
 
 };
+
+Game.prototype.stopGame = function(){
+    console.log("stoooooooooooooop")
+    window.cancelAnimationFrame(this.animation);
+}
 
 Game.prototype.followPlayer = function(enemy){     //the enemy updates its x acording to the player.x
     if(enemy.x > this.player.x){                    
@@ -52,6 +73,8 @@ Game.prototype.followPlayer = function(enemy){     //the enemy updates its x aco
     }
 }
 
+
+
 Game.prototype.start = function(){
     console.log("Game started");
     function loop(){
@@ -59,7 +82,8 @@ Game.prototype.start = function(){
         this.updateCanvas();
         this.clearCanvas();
         this.drawCanvas();
-        window.requestAnimationFrame(loop.bind(this));
+        this.animation = window.requestAnimationFrame(loop.bind(this));
+
     }
     window.requestAnimationFrame(loop.bind(this));
     
@@ -79,7 +103,7 @@ Game.prototype.still = function(){
 
 Game.prototype.createBullet = function(){
     this.bullets.push(new Bullet(canvas, (this.player.x+8)));    
-    console.log("bullet created");
+    // console.log("bullet created");
 };
 
 Game.prototype.shoot = function(){
