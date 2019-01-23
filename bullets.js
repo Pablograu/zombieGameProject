@@ -17,8 +17,9 @@ Bullet.prototype.draw = function(){
 
 Bullet.prototype.update = function(){
     this.y -= (this.speed * this.direction);
+    
 }
 
 Bullet.prototype.isInScreen = function (){
-    return(this.x + this.height < 0)
+    return this.y <= 0;
 }

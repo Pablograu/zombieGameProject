@@ -31,22 +31,33 @@ Game.prototype.drawCanvas = function(){
     this.enemies.forEach(function(enemy){
          enemy.draw();
     });
- 
+    this.drawScore();
+    
 };
 
 Game.prototype.updateCanvas = function(){
     this.player.update();
 
-    // this.bullets = this.bullets.filter(function (bullet){
-    //     return bullet.iSInScreen();
-    //  }.bind(this));
+    this.bullets = this.bullets.filter((function (bullet){
+        return !bullet.isInScreen();
+        }).bind(this));
 
     this.bullets.forEach(function(bullet){
-         bullet.update();
+        bullet.update();
 
-         this.enemies = this.enemies.filter(function (enemy){
-            return !enemy.getsShot(bullet);
-         }.bind(this));
+
+    this.enemies.forEach(function(enemy){
+            if(enemy.getsShot(bullet)){
+                this.addScore();
+            }
+        }.bind(this));
+        
+    this.enemies = this.enemies.filter(function (enemy){
+    
+        return !enemy.getsShot(bullet); 
+        }.bind(this));
+
+    
     }.bind(this));
 
     
@@ -61,26 +72,29 @@ Game.prototype.updateCanvas = function(){
             this.player.isDead = true;
             
         };
-
         
     }.bind(this));
 
 };
 
-// Game.prototype.stopGame = function(){
-//     console.log("stoooooooooooooop")
-//     window.cancelAnimationFrame(this.animation);
-// }
+Game.prototype.drawScore =function() {
+    this.ctx.font = "16px 'Press Start 2P', cursive";
+    this.ctx.fillStyle = "#f9fbff";
+    this.ctx.fillText("Score: "+ this.score, 50, 20);
+    }
+
+Game.prototype.stopGame = function(){
+    console.log("stoooooooooooooop")
+    window.cancelAnimationFrame(this.animation);
+}
 
 Game.prototype.followPlayer = function(enemy){     //the enemy updates its x acording to the player.x
     if(enemy.x > this.player.x){                    
-        enemy.x -= 0.2;
+        enemy.x -= 0.3;
     }else{
-        enemy.x += 0.2;
+        enemy.x += 0.3;
     }
 }
-
-
 
 Game.prototype.start = function(){
     console.log("Game started");
@@ -129,3 +143,6 @@ Game.prototype.createEnemy = function(){
 
 };
 
+Game.prototype.addScore = function(){
+  this.score += 100;
+}

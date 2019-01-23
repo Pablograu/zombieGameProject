@@ -32,7 +32,9 @@ function buildSplashScreen(){
     splashScreen = buildDom(`
     <div class="splash">
     <h1>IronSurvival</h1>
-            <p>Description</p>
+            <p>Press left and right key to move.</p> 
+            <p> Press "S" key to shoot</p>
+            <p>Good Luck</p>
             <button class="startBtn">Start</button>
     </div>
     `);
@@ -52,9 +54,9 @@ function buildGameScreen(){    //canvas
     gameScreen = buildDom(`
     <section class="game">
             <div class="canvas_title">
-                <h1>Ironzombies</h1>
+                <h1>IronSurvival</h1>
             </div>
-            <canvas id="canvas" width="500" height="500">
+            <canvas id="canvas" width="600" height="500">
 
             </canvas>
         </section>
@@ -100,9 +102,12 @@ function buildGameOverScreen(){
     <section class="gameover">
                 <div class="gameOver_title">
                     <h1>Game Over</h1>
+                    <div class"image">
+                    <img src="images/eye.gif">
+                    </div>
+                    
                 </div>
                 <button class="playAgainBtn">Start Again</button>
-                
         </section>
     `)
     gameOverScreen

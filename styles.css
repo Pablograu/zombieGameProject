@@ -13,8 +13,6 @@ html {
   }
 
   #canvas{
-      width: 500px;
-      height: 500px;
       border: 1px solid black;
   }
 
@@ -43,12 +41,111 @@ html {
   .splash{
     background-image: url(images/background.jpg);
     background-size: cover;
-    height: 600px;
+    height: 100vh;
+    width: 100vw;
     text-align: center;
     padding-top: 150px;
+    margin-top: 0 auto;
     
   }
 
   .game{
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    padding: 30px;
+    text-align: center;
+    background-image: url(images/gameBack1.jpg);
+    background-size: cover;
+    color: white;
+    
+  }
+
+  .splash h1{
+    margin-bottom: 80px;
+    color:white;
+    text-shadow:
+    4px 4px 1px #300000,
+    4px 6px 1px #400000,
+    4px 8px 1px #500000,
+    4px 10px 1px #600000,
+    4px 12px 1px #700000,
+    4px 14px 1px #800000,
+    4px 16px 1px #900000,
+    4px 18px 1px #A00000,
+    4px 20px 1px #B00000,
+    4px 22px 1px #C00000,
+    4px 24px 1px #D00000,
+    4px 26px 1px #E00000,
+    4px 28px 1px #F00000,
+    4px 30px 1px #FA0000,
+    4px 32px 1px #FB0000,
+    4px 34px 1px #FC0000,
+    4px 36px 1px #FD0000,
+    4px 38px 1px #FE0000,
+    4px 40px 2px #FF0000;
+}
+
+.splash p{
+    color: white;
+}
+
+.gameover{
+  display: flex;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  padding: 100px;
+  align-content: center;
+}
+
+.playAgainBtn{
+  text-transform: uppercase;
+  font-weight: bold;
+  width: 120px;
+  line-height: 52px;
+  color: #fff;
+  background-color: gray;
+  border-radius: 20px;
+}
+
+.playAgainBtn{
+  background: url('https://confnu-production.s3.amazonaws.com/conference_editions/8/images/13/image/repeating-sprite.png') 0 0 repeat-x;
+  padding: 0 14px;
+}
+
+.playAgainBtn:hover{ background-position: 0 -92px; }
+.playAgainBtn:before { background-position: -28px 0; }
+.playAgainBtn:after { background-position: -42px 0; }
+
+.gameover img{
+ 
+}
+
+@media (max-width: 600px){
+.splash h1{
+  text-align: center; 
+  justify-content: center;
+}
+
+  #canvas{
+    width: 90vw;
+    margin: 0 auto;
     text-align: center;
   }
+
+  .game{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+
+  }
+  .gameover img{
+    width: 100px;
+  }
+  .playAgainBtn{
+    width: 180px;
+  }
+}
