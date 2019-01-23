@@ -6,12 +6,13 @@ html {
   }
   
   body {
+    
     margin: 0;
     padding: 0;
     font-family:'Press Start 2P', cursive;
     
   }
-
+  
   #canvas{
       border: 1px solid black;
   }
@@ -32,6 +33,7 @@ html {
   .startBtn{
     background: url('https://confnu-production.s3.amazonaws.com/conference_editions/8/images/13/image/repeating-sprite.png') 0 0 repeat-x;
     padding: 0 14px;
+    
   }
 
   .startBtn:hover{ background-position: 0 -92px; }
@@ -91,19 +93,21 @@ html {
 }
 
 .gameover{
+  color: white;
   display: flex;
-  text-align: center;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 100%;
-  padding: 100px;
-  align-content: center;
+  height: 100vh;
+  width: 100vw;
+  background-image: url(images/drippin.jpg);
+  background-size: cover;
 }
 
 .playAgainBtn{
   text-transform: uppercase;
   font-weight: bold;
-  width: 120px;
+  width: 180px;
   line-height: 52px;
   color: #fff;
   background-color: gray;
@@ -119,8 +123,8 @@ html {
 .playAgainBtn:before { background-position: -28px 0; }
 .playAgainBtn:after { background-position: -42px 0; }
 
-.gameover img{
- 
+.image{
+  text-align: center;
 }
 
 @media (max-width: 600px){
@@ -129,23 +133,27 @@ html {
   justify-content: center;
 }
 
-  #canvas{
+p{
+  margin-top: 30px;
+}
+
+#canvas{
     width: 90vw;
     margin: 0 auto;
     text-align: center;
   }
 
-  .game{
+.game{
     display: flex;
     flex-direction: column;
     justify-content: center;
     
 
   }
-  .gameover img{
+.gameover img{
     width: 100px;
   }
-  .playAgainBtn{
+.playAgainBtn{
     width: 180px;
   }
 }

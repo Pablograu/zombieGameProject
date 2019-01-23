@@ -102,8 +102,8 @@ function buildGameOverScreen(){
     <section class="gameover">
                 <div class="gameOver_title">
                     <h1>Game Over</h1>
-                    <div class"image">
-                    <img src="images/eye.gif">
+                    <div class="image">
+                    <img class="eye" src="images/eye.gif">
                     </div>
                     
                 </div>
