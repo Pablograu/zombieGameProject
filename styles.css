@@ -159,7 +159,7 @@ p{
   }
 
 .gameover{
-  background-size: 
+  background-size: contain;
 }
 
 .gameover img{
