@@ -1,5 +1,6 @@
 "use strict";
-
+var splashMusic = new Audio("./sounds/splashAudio.mp3"); // buffers automatically when created
+var grupZombies = new Audio("./sounds/groupZombies.mp3")
 var splashScreen;
 var gameScreen;
 var gameOverScreen;
@@ -38,9 +39,11 @@ function buildSplashScreen(){
             <button class="startBtn">Start</button>
     </div>
     `);
+    
     splashScreen
     .querySelector(".startBtn")
     .addEventListener("click", startGameClick);
+    
 };
 
 
@@ -62,7 +65,8 @@ function buildGameScreen(){    //canvas
         </section>
     `);
     var canvas = document.getElementById("canvas");
-    
+    // splashMusic.play();
+    grupZombies.play();
     var gameEnd = function (){
         game.stopGame()
         destroyGameScreen();
@@ -110,6 +114,7 @@ function buildGameOverScreen(){
                 <button class="playAgainBtn">Start Again</button>
         </section>
     `)
+    
     gameOverScreen
     .querySelector(".playAgainBtn")
     .addEventListener("click", playAgainClick);

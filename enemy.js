@@ -25,7 +25,6 @@ Enemy.prototype.update = function(){
 Enemy.prototype.getsShot = function(bullet){
     var yShot = this.x < bullet.x && this.x + this.width > bullet.x;
     var xShot = this.y < bullet.y && this.y + this.height > bullet.y;
-    
     return xShot && yShot;
     
 };

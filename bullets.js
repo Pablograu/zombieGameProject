@@ -8,10 +8,12 @@ function Bullet(canvas, playerX){
     this.direction = 1;
     this.speed = 4;
     this.image = new Image();
+    this.sound = new Audio("./sounds/laser.mp3")
 }
 
 Bullet.prototype.draw = function(){
     this.image.src = "./images/lasersRed.png";
+    this.sound.play();
     this.ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
 }
 

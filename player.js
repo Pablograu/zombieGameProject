@@ -37,9 +37,9 @@ Player.prototype.setDirection = function(direction){
 }
 
 Player.prototype.checkCollisions = function(enemy) {
-    var collisionTop = this.y < enemy.y + enemy.height - 30;
-    var collisionLeft = this.x <= enemy.x + enemy.width;
-    var collisionRight = this.x + this.width >= enemy.x;
+    var collisionTop = this.y < enemy.y + enemy.height - 50;
+    var collisionLeft = this.x < enemy.x + enemy.width - 50;
+    var collisionRight = this.x + this.width >= enemy.x + 30; 
     return collisionTop && collisionLeft && collisionRight;
    }
 

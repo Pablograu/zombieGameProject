@@ -100,8 +100,11 @@ html {
   flex-direction: column;
   height: 100vh;
   width: 100vw;
-  background-image: url(images/drippin.jpg);
+  background-image: url(images/gameBack2.jpg);
   background-size: cover;
+}
+.gameover h1{
+  text-align: center;
 }
 
 .playAgainBtn{
@@ -122,6 +125,10 @@ html {
 .playAgainBtn:hover{ background-position: 0 -92px; }
 .playAgainBtn:before { background-position: -28px 0; }
 .playAgainBtn:after { background-position: -42px 0; }
+
+.image .eye{
+  width: 150px;
+}
 
 .image{
   text-align: center;
@@ -150,6 +157,11 @@ p{
     
 
   }
+
+.gameover{
+  background-size: 
+}
+
 .gameover img{
     width: 100px;
   }

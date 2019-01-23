@@ -8,6 +8,8 @@ function Game(canvas, endGame){
     this.animation;
     this.score = 0;
     this.endGame = endGame;
+    this.sound = new Audio("./sounds/ohshit2.mp3")
+    this.sound2 = new Audio("./sounds/headshot.mp3")
 }
 
 
@@ -61,7 +63,7 @@ Game.prototype.updateCanvas = function(){
     }.bind(this));
 
     
-    if (Math.random() > 0.9999){  //creates enemy with a probability of 5% in every frame
+    if (Math.random() > 0.94){  //creates enemy with a probability of 5% in every frame
         this.createEnemy();
     }
     this.enemies.forEach(function(enemy){
@@ -70,6 +72,7 @@ Game.prototype.updateCanvas = function(){
 
         if(this.player.checkCollisions(enemy)){
             this.player.isDead = true;
+            this.sound.play();
             
         };
         
@@ -144,5 +147,6 @@ Game.prototype.createEnemy = function(){
 };
 
 Game.prototype.addScore = function(){
-  this.score += 100;
+    this.sound2.play();
+    this.score += 100;
 }
