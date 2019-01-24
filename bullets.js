@@ -13,6 +13,7 @@ function Bullet(canvas, playerX){
 
 Bullet.prototype.draw = function(){
     this.image.src = "./images/lasersRed.png";
+    this.sound.volume = 0.2;
     this.sound.play();
     this.ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
 }

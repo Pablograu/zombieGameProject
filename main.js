@@ -30,6 +30,7 @@ function destroyDom(playGround){
 //--------------------------------------------
 
 function buildSplashScreen(){
+
     splashScreen = buildDom(`
     <div class="splash">
     <h1>IronSurvival</h1>
@@ -59,13 +60,14 @@ function buildGameScreen(){    //canvas
             <div class="canvas_title">
                 <h1>IronSurvival</h1>
             </div>
-            <canvas id="canvas" width="600" height="500">
+            <canvas id="canvas" width="500" height="800">
 
             </canvas>
         </section>
     `);
     var canvas = document.getElementById("canvas");
     // splashMusic.play();
+    grupZombies.volume = 0.05;
     grupZombies.play();
     var gameEnd = function (){
         game.stopGame()
