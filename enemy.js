@@ -7,6 +7,7 @@ function Enemy(canvas, x){
     this.ctx = canvas.getContext("2d");
     this.direction = 1;
     this.speed = 1.10;
+    this.health = true;
     this.image = new Image();
 }
 
@@ -28,3 +29,5 @@ Enemy.prototype.getsShot = function(bullet){
     return xShot && yShot;
     
 };
+
+// Enemy.prototype.reculate = function(bullet)

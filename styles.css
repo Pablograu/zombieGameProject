@@ -127,6 +127,11 @@ html {
 .playAgainBtn:before { background-position: -28px 0; }
 .playAgainBtn:after { background-position: -42px 0; }
 
+
+.score{
+  text-align: center;
+}
+
 .image .eye{
   width: 120px;
 }

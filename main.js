@@ -5,34 +5,39 @@ var shotSound = new Audio("./sounds/laser.mp3")
 var splashScreen;
 var gameScreen;
 var gameOverScreen;
+var counter;
+var isPlaying = true;
 
- 
-function startGameClick(){
-    destroySplashScreen();
-    buildGameScreen();   
+function isMusicPlaying() {
+  setTimeout(function(){splashMusic.play()},100)
 }
 
-function playAgainClick(){
-    destroyGameOverScreen();
-    buildSplashScreen();   
+function startGameClick() {
+  destroySplashScreen();
+  buildGameScreen();
+}
+
+function playAgainClick() {
+  destroyGameOverScreen();
+  buildSplashScreen();
 }
 
 //-------------------------------------------
-function buildDom(html){
-    var playGround = document.querySelector(".container");
-    playGround.innerHTML = html;
-    return playGround;
+function buildDom(html) {
+  var playGround = document.querySelector(".container");
+  playGround.innerHTML = html;
+  return playGround;
 }
 
-function destroyDom(playGround){
-    playGround.innerHTML = "";
-    
+function destroyDom(playGround) {
+  playGround.innerHTML = "";
+
 }
 //--------------------------------------------
 
-function buildSplashScreen(){
-
-    splashScreen = buildDom(`
+function buildSplashScreen() {
+  isMusicPlaying();
+  splashScreen = buildDom(`
     <div class="splash">
     <h1>IronSurvival</h1>
             <p>Press left and right key to move.</p> 
@@ -40,24 +45,23 @@ function buildSplashScreen(){
             <p>Good Luck</p>
             <button class="startBtn">Start</button>
     </div>
-    <audio src="./sounds/splashAudio.mp3" autoplay>
     `);
-    
-    splashScreen
+
+  splashScreen
     .querySelector(".startBtn")
     .addEventListener("click", startGameClick);
-    
+
 };
 
 
-function destroySplashScreen(){
-    destroyDom(splashScreen);
+function destroySplashScreen() {
+  destroyDom(splashScreen);
 };
 
 //--------------------------------------------
 
-function buildGameScreen(){    //canvas
-    gameScreen = buildDom(`
+function buildGameScreen() {    //canvas
+  gameScreen = buildDom(`
     <section class="game">
             <div class="canvas_title">
                 <h1>IronSurvival</h1>
@@ -67,53 +71,57 @@ function buildGameScreen(){    //canvas
             </canvas>
         </section>
     `);
-    var canvas = document.getElementById("canvas");
-     
-    grupZombies.volume = 0.05;
-    grupZombies.play();
-    var gameEnd = function (){
-        game.stopGame()
-        destroyGameScreen();
-        buildGameOverScreen();
+  var canvas = document.getElementById("canvas");
+
+  grupZombies.volume = 0.05;
+  grupZombies.play();
+  var gameEnd = function () {
+    counter = game.getScore();
+    game.stopGame()
+    destroyGameScreen();
+    buildGameOverScreen();
+  }
+
+
+  var game = new Game(canvas, gameEnd);
+
+  function onKeyDown(event) {
+    switch (event.keyCode) {
+      case 83:
+        game.shoot();
+
+
+        break;
+      case 39:
+        game.moveRight();
+        break;
+      case 37:
+        game.moveLeft();
+        break;
+      default:
+        game.still();
+
     }
+  }
+  document.addEventListener("keydown", onKeyDown);
 
-
-    var game = new Game(canvas, gameEnd); 
-
-    function onKeyDown(event){
-        switch(event.keyCode){
-            case 83: 
-                game.shoot();
-                
-            break;
-            case 39: 
-                game.moveRight();
-            break;
-            case 37: 
-                game.moveLeft();
-            break;
-            default: 
-                game.still();
-            
-        }
-    }
-    document.addEventListener("keydown", onKeyDown);
-
-    game.start();
-    console.log("lets play!!!");
+  game.start();
+  console.log("lets play!!!");
 };
 
 
-function destroyGameScreen(){
-    destroyDom(gameScreen);
-    console.log("game screen destroyed")
+function destroyGameScreen() {
+
+  destroyDom(gameScreen);
+  console.log("game screen destroyed")
 }
 
 //-----game over
-function buildGameOverScreen(){
-    gameOverScreen = buildDom(`
+function buildGameOverScreen() {
+  gameOverScreen = buildDom(`
     <section class="gameover">
                 <div class="gameOver_title">
+                    <p class="score">Score:${counter} </p>
                     <h1>Game Over</h1>
                     <div class="image">
                     <img class="eye" src="images/eye.gif">
@@ -123,21 +131,21 @@ function buildGameOverScreen(){
                 <button class="playAgainBtn">Start Again</button>
         </section>
     `)
-    
-    gameOverScreen
+
+  gameOverScreen
     .querySelector(".playAgainBtn")
     .addEventListener("click", playAgainClick);
 };
 
-function destroyGameOverScreen(){
-    destroyDom(gameOverScreen);
-    
+function destroyGameOverScreen() {
+  counter = 0;
+  destroyDom(gameOverScreen);
+
 }
 
-
-function loadGame(){
-    console.log("Game ready");
-    buildSplashScreen();
+function loadGame() {
+  console.log("Game ready");
+  buildSplashScreen();
 }
 
 
