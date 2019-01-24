@@ -120,6 +120,7 @@ html {
 .playAgainBtn{
   background: url('https://confnu-production.s3.amazonaws.com/conference_editions/8/images/13/image/repeating-sprite.png') 0 0 repeat-x;
   padding: 0 14px;
+  margin-top: 18px;
 }
 
 .playAgainBtn:hover{ background-position: 0 -92px; }
@@ -127,7 +128,7 @@ html {
 .playAgainBtn:after { background-position: -42px 0; }
 
 .image .eye{
-  width: 150px;
+  width: 120px;
 }
 
 .image{

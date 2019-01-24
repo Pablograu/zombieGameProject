@@ -9,7 +9,7 @@ function Game(canvas, endGame){
     this.score = 0;
     this.endGame = endGame;
     this.sound = new Audio("./sounds/ohshit2.mp3")
-    this.sound2 = new Audio("./sounds/headshot.mp3")
+    this.headShotSound = new Audio("./sounds/headshot.mp3")
    
 }
 
@@ -28,7 +28,7 @@ Game.prototype.drawCanvas = function(){
     this.player.draw();
     
     this.bullets.forEach(function(bullet){
-         bullet.draw()
+        bullet.draw()
     });
     
     this.enemies.forEach(function(enemy){
@@ -149,6 +149,7 @@ Game.prototype.createEnemy = function(){
 };
 
 Game.prototype.addScore = function(){
-    this.sound2.play();
+    this.headShotSound.volume = 0.1;
+    this.headShotSound.play();
     this.score += 100;
 }

@@ -3,7 +3,7 @@ function Player(canvas){
     this.width =  50;
     this.height =  60;
     this.x = (canvas.width - (this.width + this.height))/2;
-    this.y = 400;
+    this.y = 450;
     this.ctx = canvas.getContext("2d");
     this.direction = 0;
     this.speed = 3.5;

@@ -1,6 +1,7 @@
 "use strict";
 var splashMusic = new Audio("./sounds/splashAudio.mp3"); // buffers automatically when created
-var grupZombies = new Audio("./sounds/groupZombies.mp3")
+var grupZombies = new Audio("./sounds/groupZombies.mp3");
+var shotSound = new Audio("./sounds/laser.mp3")
 var splashScreen;
 var gameScreen;
 var gameOverScreen;
@@ -39,6 +40,7 @@ function buildSplashScreen(){
             <p>Good Luck</p>
             <button class="startBtn">Start</button>
     </div>
+    <audio src="./sounds/splashAudio.mp3" autoplay>
     `);
     
     splashScreen
@@ -60,13 +62,13 @@ function buildGameScreen(){    //canvas
             <div class="canvas_title">
                 <h1>IronSurvival</h1>
             </div>
-            <canvas id="canvas" width="500" height="800">
+            <canvas id="canvas" width="500" height="550">
 
             </canvas>
         </section>
     `);
     var canvas = document.getElementById("canvas");
-    // splashMusic.play();
+     
     grupZombies.volume = 0.05;
     grupZombies.play();
     var gameEnd = function (){
@@ -80,13 +82,18 @@ function buildGameScreen(){    //canvas
 
     function onKeyDown(event){
         switch(event.keyCode){
-            case 83: game.shoot();
+            case 83: 
+                game.shoot();
+                
             break;
-            case 39: game.moveRight();
+            case 39: 
+                game.moveRight();
             break;
-            case 37: game.moveLeft();
+            case 37: 
+                game.moveLeft();
             break;
-            default: game.still();
+            default: 
+                game.still();
             
         }
     }
