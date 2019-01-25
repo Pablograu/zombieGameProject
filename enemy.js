@@ -30,4 +30,7 @@ Enemy.prototype.getsShot = function(bullet){
     
 };
 
-// Enemy.prototype.reculate = function(bullet)
+Enemy.prototype.reculate = function(){
+    this.y -= 8;
+    this.health = false;    
+}

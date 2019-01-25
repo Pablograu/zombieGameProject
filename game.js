@@ -46,7 +46,7 @@ Game.prototype.updateCanvas = function () {
   this.bullets = this.bullets.filter((function (bullet) {
     return !bullet.isInScreen();
   }).bind(this));
-
+  var usedBullets = [];
   this.bullets.forEach(function (bullet) {
     bullet.update();
 
@@ -58,15 +58,20 @@ Game.prototype.updateCanvas = function () {
     }.bind(this));
 
     this.enemies = this.enemies.filter(function (enemy) {
-
+      if(enemy.getsShot(bullet)){
+        usedBullets.push(bullet);
+      }
       return !enemy.getsShot(bullet);
     }.bind(this));
 
 
   }.bind(this));
 
+  this.bullets=this.bullets.filter(function(bullet){
+    return !usedBullets.includes(bullet);
+  })
 
-  if (Math.random() > 0.93) {  //creates enemy with a probability of 5% in every frame
+  if (Math.random() > 0.93) {  //creates enemy with a probability of 7% in every frame
     this.createEnemy();
   }
   this.enemies.forEach(function (enemy) {
