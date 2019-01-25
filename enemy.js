@@ -6,7 +6,7 @@ function Enemy(canvas, x){
     this.y = 0;
     this.ctx = canvas.getContext("2d");
     this.direction = 1;
-    this.speed = 1.10;
+    this.speed = 1.30;
     this.health = true;
     this.image = new Image();
 }

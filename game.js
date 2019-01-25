@@ -71,7 +71,7 @@ Game.prototype.updateCanvas = function () {
     return !usedBullets.includes(bullet);
   })
 
-  if (Math.random() > 0.93) {  //creates enemy with a probability of 7% in every frame
+  if (Math.random() > 0.95) {  //creates enemy with a probability of 7% in every frame
     this.createEnemy();
   }
   this.enemies.forEach(function (enemy) {
@@ -80,7 +80,7 @@ Game.prototype.updateCanvas = function () {
 
     if (this.player.checkCollisions(enemy)) {
       this.player.isDead = true;
-      this.sound.volume = 0.2;
+      this.sound.volume = 0.6;
       this.sound.play();
 
     };
